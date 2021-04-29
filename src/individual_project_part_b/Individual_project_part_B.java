@@ -5,11 +5,6 @@
  */
 package individual_project_part_b;
 
-import classes.Assigment;
-import classes.Course;
-import classes.Student;
-import classes.Trainer;
-
 /**
  *
  * @author kopan
@@ -47,7 +42,7 @@ public class Individual_project_part_B {
         InsertMethods.insert(trainer1, course1);
         InsertMethods.insert(individualProject1,student2, course1);
         
-
+ 
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package classes;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -21,7 +22,10 @@ public class Student {
     private String firstName;
     private String lastName;
     private DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private DateTimeFormatter format2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+   
     private String dateOfBirth;
+    private LocalDate localDateOfBirth;
     private LocalDateTime dateTimeOfBirth;
     private double tuitionFees;
     private ArrayList<Assigment> assigment = new ArrayList<Assigment>();
@@ -42,14 +46,11 @@ public class Student {
         this.dateOfBirth = inputDate;
 
         this.tuitionFees = tuitionFees;
-//        try{
-//       
-//            dateOfBirth = LocalDate.parse(inputDate, format);
-//        } catch (DateTimeParseException e) {
-//            System.err.println("Wrong date format");
-//        }
-//        dateTimeOfBirth= dateOfBirth.atTime(0, 0, 0);
-//          System.out.println("parsed"+ dateTimeOfBirth.toString());
+  
+            localDateOfBirth = LocalDate.parse(inputDate, format2);
+  
+        dateTimeOfBirth= localDateOfBirth.atTime(0, 0, 0);
+          System.out.println("parsed "+ dateTimeOfBirth.toString());
     }
 
     @Override

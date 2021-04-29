@@ -247,14 +247,14 @@ public class InsertMethods {
         return lastInsertedTrainerID;
     }
 
-    private static int selectIDOfStudent(Student student) {
+    public static int selectIDOfStudent(Student student) {
         Connection conn = getConnection();
         PreparedStatement pstm = null;
         ResultSet rs = null;
         int selectedStudentID = 0;
         try {
-            pstm = conn.prepareStatement("SELECT * FROM indidual_project_part_b.students where last_name = ?; ");
-            pstm.setString(1, (student.getLastName()));
+            pstm = conn.prepareStatement("SELECT * FROM indidual_project_part_b.students where last_name like ?; ");
+            pstm.setString(1, ("%"+student.getLastName())+"%");
             rs = pstm.executeQuery();
             while (rs.next()) {
                 selectedStudentID = rs.getInt(1);
@@ -274,8 +274,8 @@ public class InsertMethods {
         ResultSet rs = null;
         int selectedCourseID = 0;
         try {
-            pstm = conn.prepareStatement("SELECT idcourse FROM indidual_project_part_b.courses where courses.title = ?;");
-            pstm.setString(1, course.getTitle());
+            pstm = conn.prepareStatement("SELECT idcourse FROM indidual_project_part_b.courses where courses.title like ?;");
+            pstm.setString(1,"%"+ course.getTitle()+"%");
             rs = pstm.executeQuery();
             while (rs.next()) {
                 selectedCourseID = rs.getInt(1);
@@ -295,8 +295,8 @@ public class InsertMethods {
         ResultSet rs = null;
         int TrainerID = 0;
         try {
-            pstm = conn.prepareStatement("SELECT * FROM indidual_project_part_b.trainers WHERE last_name = ?;");
-            pstm.setString(1, trainer.getLastName());
+            pstm = conn.prepareStatement("SELECT * FROM indidual_project_part_b.trainers WHERE last_name like ?;");
+            pstm.setString(1,"%"+ trainer.getLastName()+"%");
             rs = pstm.executeQuery();
             while (rs.next()) {
                 TrainerID = rs.getInt(1);
@@ -316,8 +316,8 @@ public class InsertMethods {
         ResultSet rs = null;
         int AssigmentID = 0;
         try {
-            pstm = conn.prepareStatement("SELECT * FROM indidual_project_part_b.assigments WHERE description = ?;");
-            pstm.setString(1, assigment.getDescription());
+            pstm = conn.prepareStatement("SELECT * FROM indidual_project_part_b.assigments WHERE description like ?;");
+            pstm.setString(1,"%"+ assigment.getDescription()+"%");
             rs = pstm.executeQuery();
             while (rs.next()) {
                 AssigmentID = rs.getInt(1);
