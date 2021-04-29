@@ -5,6 +5,11 @@
  */
 package individual_project_part_b;
 
+import classes.Assigment;
+import classes.Course;
+import classes.Student;
+import classes.Trainer;
+
 /**
  *
  * @author kopan
